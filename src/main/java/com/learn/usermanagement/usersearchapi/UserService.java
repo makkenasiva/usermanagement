@@ -2,6 +2,12 @@ package com.learn.usermanagement.usersearchapi;
 
 import org.springframework.stereotype.Service;
 
+
+import java.util.ArrayList;
+import java.util.List;
+
+
+
 @Service
 public class UserService {
     private UserRepository userRepository;
@@ -10,24 +16,20 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public User searchUser(String query) {
-        User user = userRepository.findByFirstname(query);
-        if (user != null) {
-            return user;
-        }
+    public List<User> searchUsers(String query) {
+        List<User> usersByFirstname = userRepository.findByFirstname(query);
+        List<User> usersByUsername = userRepository.findByUsername(query);
+        List<User> usersByEmail = userRepository.findByEmail(query);
 
-        user = userRepository.findByUsername(query);
-        if (user != null) {
-            return user;
-        }
+        List<User> combinedResults = new ArrayList<>();
+        combinedResults.addAll(usersByFirstname);
+        combinedResults.addAll(usersByUsername);
+        combinedResults.addAll(usersByEmail);
 
-        user = userRepository.findByEmail(query);
-        if (user != null) {
-            return user;
-        }
-
-        return null; // No user found
+        return combinedResults;
     }
 }
+
+
 
 
