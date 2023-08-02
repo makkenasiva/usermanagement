@@ -14,16 +14,25 @@ public class UserRepo {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public void createUser(UserModel user) {
-        if (isUsernameExists(user.getUsername())) {
-            throw new IllegalArgumentException("Username already exists");
-        }
-        String sql = "INSERT INTO user (id, username, user_password, email, status, role_id, role_name,institution_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
-        // Retrieve role_id based on role_name
-        String roleSql = "SELECT role_id FROM role WHERE role_name = ?";
-        int roleId = jdbcTemplate.queryForObject(roleSql, Integer.class, user.getRole_name());
-        jdbcTemplate.update(sql, user.getId(), user.getUsername(), user.getUser_password(), user.getEmail(), "Active", roleId, user.getRole_name(),user.getInstitution_id());
+
+
+
+
+    public String createUser(UserModel user) {
+        if (isUsernameExists(user.getUsername())) {
+            return "Username already exists";
+
+        }
+        else {
+
+
+        String sql = "INSERT INTO user (id, username, user_password, email, status, role_id,institution_id) VALUES (?, ?, ?, ?, ?, ?, ?)";
+
+
+        jdbcTemplate.update(sql, user.getId(), user.getUsername(), user.getUser_password(), user.getEmail(), "Active", user.getRole_id(),user.getInstitution_id());
+        return  "user details saved successfully";
+    }
     }
     public boolean isUsernameExists(String username) {
         String sql = "SELECT COUNT(*) FROM user WHERE username = ?";

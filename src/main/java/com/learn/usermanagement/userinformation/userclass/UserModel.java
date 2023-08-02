@@ -8,16 +8,17 @@ import lombok.*;
 @AllArgsConstructor
 public class UserModel {
     @JsonIgnore
-    private Integer id;
+    private Long id;
     private String username;
     private String user_password;
     private String email;
     @JsonIgnore
     private String status;
-    @JsonIgnore
+
     private Integer role_id;
 
-    private String role_name;
 
     private Integer institution_id;
+    @JsonIgnore
+    private Integer institution_name;
 }
