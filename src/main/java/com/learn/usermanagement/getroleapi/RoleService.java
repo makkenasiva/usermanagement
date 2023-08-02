@@ -16,7 +16,7 @@ public class RoleService {
     public String getRoleNameById(int id) {
         Role role = roleRepository.findById(id).orElse(null);
         if (role != null) {
-            return role.getRoleName();
+            return role.getRole_name();
         } else {
             return "Invalid ID";
         }
