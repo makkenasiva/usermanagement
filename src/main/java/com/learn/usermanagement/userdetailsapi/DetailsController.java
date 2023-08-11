@@ -30,11 +30,11 @@ public class DetailsController {
             Map<String, String> newDetails = new HashMap<>();
             newDetails.put("firstname", userDetails.getFirstname());
             newDetails.put("username", userDetails.getUsername());
-            newDetails.put("password", userDetails.getPassword());
+            newDetails.put("user_password", userDetails.getUser_password());
             newDetails.put("email", userDetails.getEmail());
             newDetails.put("status", userDetails.getStatus());
-            newDetails.put("institution", userDetails.getInstitution());
-            newDetails.put("role", userDetails.getRole());
+            newDetails.put("institution_name", userDetails.getInstitution_name());
+            newDetails.put("role_name", userDetails.getRole_name());
             return ResponseEntity.ok(newDetails);
         } else {
             // No user found

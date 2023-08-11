@@ -8,13 +8,13 @@ import java.util.Map;
 import java.util.UUID;
 
 @Service
-public class UserService {
+public class UserS {
 
     private final CustomUserRepo customUserRepo;
     private final Map<String, String> resetTokens; // In-memory storage for reset tokens
 
     @Autowired
-    public UserService(CustomUserRepo customUserRepo) {
+    public UserS(CustomUserRepo customUserRepo) {
         this.customUserRepo = customUserRepo;
         this.resetTokens = new HashMap<>();
     }

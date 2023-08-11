@@ -13,7 +13,7 @@ public class RoleService {
         this.roleRepository = roleRepository;
     }
 
-    public String getRoleNameById(int id) {
+    public String getRoleNameById(Integer id) {
         Role role = roleRepository.findById(id).orElse(null);
         if (role != null) {
             return role.getRole_name();
