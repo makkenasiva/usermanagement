@@ -16,14 +16,14 @@ import lombok.Setter;
 public class UserDetails {
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
-   private int id;
+   private Integer id;
 
    private String firstname;
    private String username;
-   private String password;
+   private String user_password;
    private String status;
    private String email;
-   private int details;
-   private String institution;
-   private String role;
+   private Integer details;
+   private String institution_name;
+   private String role_name;
 }

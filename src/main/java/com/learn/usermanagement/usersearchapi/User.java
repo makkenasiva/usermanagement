@@ -18,10 +18,10 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
     private String firstname;
     private String username;
-    private String password;
+    private String user_password;
     private String status;
     private String email;
     private String details;

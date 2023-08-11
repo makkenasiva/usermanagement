@@ -20,5 +20,5 @@ public class UserModel {
 
     private Integer institution_id;
     @JsonIgnore
-    private Integer institution_name;
+    private String institution_name;
 }

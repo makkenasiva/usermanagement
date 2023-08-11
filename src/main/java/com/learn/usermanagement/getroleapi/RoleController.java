@@ -17,7 +17,7 @@ public class RoleController {
     }
 
     @GetMapping("/roles/{id}")
-    public ResponseEntity<Object> getRoleNameById(@PathVariable("id") int id) {
+    public ResponseEntity<Object> getRoleNameById(@PathVariable("id") Integer id) {
         String roleName = roleService.getRoleNameById(id);
         if (!roleName.equals("Invalid ID")) {
             // Return the role name

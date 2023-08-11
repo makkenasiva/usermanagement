@@ -8,16 +8,16 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/reset-password")
 public class ResetPasswordController {
 
-    private final UserService userService;
+    private final UserS userS;
 
     @Autowired
-    public ResetPasswordController(UserService userService) {
-        this.userService = userService;
+    public ResetPasswordController(UserS userS) {
+        this.userS = userS;
     }
 
     @GetMapping // GET request to generate the reset token
     public String generateResetToken(@RequestParam("username") String username) {
-        String resetToken = userService.generateResetToken(username);
+        String resetToken = userS.generateResetToken(username);
         System.out.println("Generated reset token: " + resetToken); // Log the reset token to the backend terminal
         return "Reset token generated";
     }
@@ -28,7 +28,7 @@ public class ResetPasswordController {
         String resetToken = request.getResetToken();
         String newPassword = request.getNewPassword();
 
-        String result = userService.resetPassword(username, resetToken, newPassword);
+        String result = userS.resetPassword(username, resetToken, newPassword);
         return result;
     }
 }

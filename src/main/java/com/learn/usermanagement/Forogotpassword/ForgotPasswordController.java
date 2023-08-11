@@ -10,16 +10,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ForgotPasswordController {
 
-    private final UserService userService;
+    private final UserS userS;
 
     @Autowired
-    public ForgotPasswordController(UserService userService) {
-        this.userService = userService;
+    public ForgotPasswordController(UserS userS) {
+        this.userS = userS;
     }
 
     @PostMapping("/forgot-password")
     public ResponseEntity<String> forgotPassword(@RequestParam String username) {
-        String resetToken = userService.generateResetToken(username);
+        String resetToken = userS.generateResetToken(username);
         if (resetToken.equals("User not found")) {
             return ResponseEntity.badRequest().body("User not found");
         }
